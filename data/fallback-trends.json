@@ -1,0 +1,49 @@
+{
+  "source": "Kollywood Curated Billboard (Fallback Engine)",
+  "fetchedAt": "2026-11-13T12:00:00Z",
+  "chart": "Top 10 Tamil Cinema Hits",
+  "disclaimer": "Served via reliable fallback cache due to third-party API latency threshold (2.5s timeout).",
+  "tracks": [
+    {
+      "rank": 1,
+      "title": "Hukum - Thalaivar Alappara",
+      "movie": "Jailer",
+      "musicDirector": "Anirudh Ravichander",
+      "views": "280M+ Streams",
+      "trendingStatus": "🔥 #1 All-Time Kuthu Anthem"
+    },
+    {
+      "rank": 2,
+      "title": "Naa Ready",
+      "movie": "Leo",
+      "musicDirector": "Anirudh Ravichander",
+      "views": "310M+ Streams",
+      "trendingStatus": "⚡ Thalapathy Viral Hit"
+    },
+    {
+      "rank": 3,
+      "title": "Aga Naga",
+      "movie": "Ponniyin Selvan I",
+      "musicDirector": "A.R. Rahman",
+      "views": "190M+ Streams",
+      "trendingStatus": "✨ Classical Tamil Melody"
+    },
+    {
+      "rank": 4,
+      "title": "Megham Karukatha",
+      "movie": "Thiruchitrambalam",
+      "musicDirector": "Anirudh Ravichander",
+      "views": "175M+ Streams",
+      "trendingStatus": "🌧️ Feel-Good Rain Vibe"
+    },
+    {
+      "rank": 5,
+      "title": "Nenjukkul Peidhidum",
+      "movie": "Vaaranam Aayiram",
+      "musicDirector": "Harris Jayaraj",
+      "views": "210M+ Streams",
+      "trendingStatus": "💖 Timeless Kollywood Romance"
+    }
+  ]
+}
+

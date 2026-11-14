@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>500 — Server Error | Spotify Tamil</title>
+  <link rel="stylesheet" href="/css/spotify.css"/>
+  <link rel="stylesheet" href="/css/chat-widget.css"/>
+  <style>
+    .error-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(180deg,#2d1a1a 0%,#121212 100%);text-align:center;padding:40px 20px}
+    .error-page .error-icon{font-size:6rem;margin-bottom:16px}
+    .error-page h1{font-size:5rem;font-weight:900;color:#f15e6c;margin-bottom:8px}
+    .error-page h2{font-size:1.6rem;font-weight:700;margin-bottom:12px}
+    .error-page p{color:#a7a7a7;font-size:1rem;max-width:500px;margin:0 auto 28px;line-height:1.7}
+    .error-page .error-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .error-page .error-code-detail{margin-top:32px;padding:20px 28px;background:#181818;border:1px solid #282828;border-radius:12px;text-align:left;max-width:500px;width:100%}
+    .error-page .error-code-detail h4{font-size:.95rem;color:#f15e6c;margin-bottom:8px}
+    .error-page .error-code-detail p{font-size:.88rem;color:#b3b3b3;margin:0}
+    .error-page .ask-ai-banner{margin-top:24px;padding:16px 24px;background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.3);border-radius:10px;max-width:500px;width:100%;display:flex;align-items:center;gap:14px}
+    .error-page .ask-ai-banner .ai-icon{font-size:2rem}
+    .error-page .ask-ai-banner div h4{font-size:.95rem;color:#1db954;margin-bottom:4px}
+    .error-page .ask-ai-banner div p{font-size:.82rem;color:#a7a7a7;margin:0}
+  </style>
+</head>
+<body>
+<div class="error-page">
+  <div class="error-icon">💥</div>
+  <h1>500</h1>
+  <h2>Kollywood Audio Server Crashed!</h2>
+  <p>An unexpected internal server error occurred in our Spotify Tamil streaming backend. Our engineering crew has been automatically alerted and is investigating.</p>
+
+  <div class="error-actions">
+    <a href="/" class="btn-pill btn-green" style="text-decoration:none;">🏠 Back to Home</a>
+    <a href="/health" class="btn-pill btn-outline" style="text-decoration:none;">🩺 Check System Health</a>
+    <button class="btn-pill btn-outline" onclick="document.getElementById('chatFab')&&document.getElementById('chatFab').click()">🤖 Ask AI Assistant</button>
+  </div>
+
+  <div class="error-code-detail">
+    <h4>💥 Error 500: Internal Server Error</h4>
+    <p>An unexpected server-side exception occurred in the Spotify Tamil audio streaming backend or database cluster. Please reload the player in a minute, or check /health for system status. If this persists, the AI assistant can create a support ticket for you.</p>
+  </div>
+
+  <div class="ask-ai-banner">
+    <div class="ai-icon">🤖</div>
+    <div>
+      <h4>Ask the AI Assistant</h4>
+      <p>Click the green chat bubble at the bottom right to ask our AI about this error, check server status, or create a support ticket for immediate investigation.</p>
+    </div>
+  </div>
+</div>
+<script src="/js/chat-widget.js"></script>
+</body>
+</html>
+

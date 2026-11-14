@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: spotify-tamil-ai
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: THIRD_PARTY_TIMEOUT_MS
+        value: "2500"
+      - key: MONGODB_URI
+        sync: false
+

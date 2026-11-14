@@ -1,0 +1,34 @@
+{
+  "name": "spotify-tamil-ai",
+  "version": "1.0.0",
+  "description": "Spotify Tamil — Original Kollywood Music Platform with AI Assistant, FAQ System, Error Code Lab, and Support Ticketing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "spotify",
+    "tamil",
+    "kollywood",
+    "ai-assistant",
+    "faq",
+    "music"
+  ],
+  "author": "vasugikct",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.14.1",
+    "sqlite3": "^5.1.7"
+  },
+  "allowScripts": {
+    "sqlite3@6.0.1": true
+  }
+}

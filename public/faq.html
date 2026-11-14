@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Frequently Asked Questions — Spotify Tamil</title>
+  <link rel="stylesheet" href="/css/spotify.css"/>
+  <link rel="stylesheet" href="/css/chat-widget.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❓</text></svg>"/>
+  <style>
+    .faq-page-bg { background: linear-gradient(180deg, #132b1f 0%, #121212 320px); }
+    .faq-hero { text-align: center; padding: 45px 20px 25px; }
+    .faq-hero h1 { font-size: 2.6rem; font-weight: 900; margin-bottom: 8px; }
+    .faq-hero p { color: #a7a7a7; font-size: 1rem; max-width: 620px; margin: 0 auto 20px; }
+    .faq-search { max-width: 500px; margin: 0 auto; position: relative; }
+    .faq-search input { width: 100%; padding: 14px 20px 14px 46px; border-radius: 500px; border: 1px solid #333; background: #242424; color: #fff; font-size: 0.95rem; outline: none; }
+    .faq-search input:focus { border-color: #1db954; }
+    .faq-search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; fill: #a7a7a7; }
+    .faq-filters { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 24px auto 16px; max-width: 900px; padding: 0 16px; }
+    .faq-count-badge { text-align: center; color: #1db954; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; }
+    .faq-list { max-width: 840px; margin: 0 auto; padding: 0 20px 60px; }
+    .faq-item { background: #181818; border: 1px solid #282828; border-radius: 10px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: #3e3e3e; }
+    .faq-question { padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.02rem; color: #fff; }
+    .faq-question .faq-q-text { display: flex; align-items: center; gap: 12px; }
+    .faq-arrow { font-size: 1rem; color: #a7a7a7; transition: transform 0.25s; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); color: #1db954; }
+    .faq-answer { display: none; padding: 0 22px 20px; color: #b3b3b3; font-size: 0.92rem; line-height: 1.7; border-top: 1px solid #222; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-answer p { margin-top: 14px; margin-bottom: 14px; }
+    .faq-meta { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 10px; border-top: 1px dashed #2a2a2a; font-size: 0.8rem; }
+    .faq-cat-tag { background: rgba(29, 185, 84, 0.15); color: #1db954; padding: 3px 10px; border-radius: 500px; font-weight: 600; }
+    .faq-helpful { display: flex; align-items: center; gap: 8px; }
+    .helpful-btn { background: #242424; border: 1px solid #333; color: #b3b3b3; padding: 4px 12px; border-radius: 500px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; }
+    .helpful-btn:hover { border-color: #1db954; color: #1db954; }
+  </style>
+</head>
+<body>
+<div class="app-container">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="brand-header">
+      <svg class="brand-logo" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381C8.88 5.82 15.9 6.12 20.1 8.82c.54.3.72 1.02.42 1.56-.299.421-1.02.599-1.439.3z"/></svg>
+      <span class="brand-title">Spotify Tamil</span>
+    </div>
+
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="/">
+          <svg viewBox="0 0 24 24"><path d="M12.5 3.247a1 1 0 00-1 0L4 7.577V20h4.5v-6h7v6H20V7.577l-7.5-4.33z"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a href="/faq">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+          <span>FAQ</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/premium">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <span>Premium</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/errors">
+          <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          <span>Error Lab</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/health">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+          <span>Health</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section-title">Help & Support</div>
+    <ul class="playlists-list">
+      <li><a href="#" onclick="document.getElementById('chatFab')&&document.getElementById('chatFab').click();return false;">🤖 Ask AI Assistant</a></li>
+      <li><a href="/errors">⚠️ Error Code Guide</a></li>
+      <li><a href="/health">🩺 Server Health & Logs</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN VIEW -->
+  <main class="main-view faq-page-bg">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="nav-btn" onclick="history.back()">←</button>
+        <button class="nav-btn" onclick="history.forward()">→</button>
+      </div>
+      <div class="topbar-right">
+        <a href="/premium" class="btn-pill btn-premium">Explore Premium</a>
+        <div class="user-avatar" title="Vasugi">V</div>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <div class="faq-hero">
+        <h1>❓ Frequently Asked Questions</h1>
+        <p>Find answers to common questions about Spotify Tamil audio quality, lyrics, billing, and downloads — queried live from our SQL database.</p>
+        <div class="faq-search">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="faqSearchInput" placeholder="Search FAQs (e.g. dolby atmos, offline, error 488, student)…"/>
+        </div>
+      </div>
+
+      <div class="faq-filters" id="faqFilters">
+        <button class="chip active" data-cat="All">All FAQs</button>
+        <button class="chip" data-cat="Tamil Audio Quality">🎧 Audio Quality</button>
+        <button class="chip" data-cat="Subscriptions & Billing">💳 Subscriptions</button>
+        <button class="chip" data-cat="Copyright & Licensing">📜 Licensing</button>
+        <button class="chip" data-cat="Downloads & Offline">📥 Offline</button>
+        <button class="chip" data-cat="Playback Troubleshooting">🔧 Playback</button>
+      </div>
+
+      <div class="faq-count-badge" id="faqCountBadge">Connecting to SQL database…</div>
+
+      <div class="faq-list" id="faqList">
+        <p style="color:#a7a7a7;text-align:center;padding:30px;">Loading FAQs from SQL database…</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Player bar placeholder -->
+  <footer class="player-bar">
+    <div class="now-playing-left">
+      <img class="now-playing-art" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=120&auto=format&fit=crop&q=60" alt="Art"/>
+      <div class="now-playing-meta"><h4>Spotify Tamil</h4><p>FAQ Help Center</p></div>
+    </div>
+    <div class="player-center"><div class="player-controls-btns"><button class="btn-play-pause"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button></div></div>
+    <div class="player-right"></div>
+  </footer>
+</div>
+
+<script>
+(function() {
+  let currentCategory = 'All';
+  let currentSearch = '';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Filter chips
+    const filterContainer = document.getElementById('faqFilters');
+    filterContainer.addEventListener('click', (e) => {
+      const chip = e.target.closest('.chip');
+      if (!chip) return;
+      filterContainer.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentCategory = chip.dataset.cat;
+      loadFAQs();
+    });
+
+    // Search input
+    let debounce;
+    const searchInput = document.getElementById('faqSearchInput');
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        currentSearch = e.target.value.trim();
+        loadFAQs();
+      }, 250);
+    });
+
+    loadFAQs();
+  });
+
+  async function loadFAQs() {
+    const list = document.getElementById('faqList');
+    const countBadge = document.getElementById('faqCountBadge');
+
+    try {
+      let url = '/api/faqs?';
+      if (currentCategory !== 'All') url += 'category=' + encodeURIComponent(currentCategory) + '&';
+      if (currentSearch) url += 'search=' + encodeURIComponent(currentSearch);
+
+      const res = await fetch(url);
+      const data = await res.json();
+      const faqs = data.faqs || [];
+
+      countBadge.textContent = `${faqs.length} FAQ${faqs.length !== 1 ? 's' : ''} stored in SQL database${currentCategory !== 'All' ? ' (' + currentCategory + ')' : ''}`;
+
+      if (!faqs.length) {
+        list.innerHTML = `<div style="text-align:center;padding:40px;color:#a7a7a7;">
+          <p style="font-size:1.1rem;margin-bottom:12px;">No matching FAQs found in SQL database.</p>
+          <button class="btn-pill btn-green" onclick="document.getElementById('chatFab')&&document.getElementById('chatFab').click()">🤖 Ask AI Assistant</button>
+        </div>`;
+        return;
+      }
+
+      list.innerHTML = faqs.map((faq, i) => `
+        <div class="faq-item" id="faq-${faq.id}">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <div class="faq-q-text">
+              <span style="color:#1db954;font-size:0.9rem;">${i+1}.</span>
+              <span>${escapeHtml(faq.question)}</span>
+            </div>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>${escapeHtml(faq.answer)}</p>
+            <div class="faq-meta">
+              <span class="faq-cat-tag">${escapeHtml(faq.category)}</span>
+              <div class="faq-helpful">
+                <span>Was this helpful?</span>
+                <button class="helpful-btn" onclick="markHelpful(${faq.id}, this)">👍 Yes (${faq.helpful_count || 0})</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    } catch (err) {
+      list.innerHTML = '<p style="color:#f87171;text-align:center;">Failed to load FAQs from SQL database.</p>';
+    }
+  }
+
+  window.markHelpful = async function(id, btn) {
+    try {
+      const res = await fetch(`/api/faqs/${id}/helpful`, { method: 'POST' });
+      const data = await res.json();
+      if (data.success) {
+        btn.textContent = `👍 Yes (${data.faq.helpful_count})`;
+        btn.style.borderColor = '#1db954';
+        btn.style.color = '#1db954';
+      }
+    } catch (e) {}
+  };
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+})();
+</script>
+<script src="/js/chat-widget.js"></script>
+</body>
+</html>

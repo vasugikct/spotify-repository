@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Check — Spotify Tamil</title>
+  <link rel="stylesheet" href="/css/spotify.css"/>
+  <link rel="stylesheet" href="/css/chat-widget.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>"/>
+  <style>
+    .health-bg{background:linear-gradient(180deg,#0d2818 0%,#121212 300px)}
+    .health-hero{text-align:center;padding:40px 20px 20px}
+    .health-hero h1{font-size:2.2rem;font-weight:900;margin-bottom:8px}
+    .health-hero p{color:#a7a7a7;max-width:550px;margin:0 auto}
+    .health-dashboard{max-width:900px;margin:24px auto;padding:0 20px 60px}
+    .health-status-bar{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px;padding:16px;background:#181818;border-radius:10px;border:1px solid #282828}
+    .status-dot{width:14px;height:14px;border-radius:50%;animation:pulse 2s infinite}
+    .status-dot.healthy{background:#1db954;box-shadow:0 0 12px rgba(29,185,84,.5)}
+    .status-dot.degraded{background:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,.5)}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .status-text{font-size:1.2rem;font-weight:700}
+    .health-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px}
+    .health-card{background:#181818;border:1px solid #282828;border-radius:10px;padding:20px}
+    .health-card h3{font-size:.95rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .health-card h3 .h-badge{font-size:.65rem;padding:2px 8px;border-radius:4px;font-weight:800}
+    .h-up{background:#1db954;color:#000}
+    .h-down{background:#f15e6c;color:#000}
+    .h-fallback{background:#f59e0b;color:#000}
+    .health-row{display:flex;justify-content:space-between;padding:6px 0;font-size:.85rem;border-bottom:1px solid #1e1e1e}
+    .health-row .label{color:#a7a7a7}
+    .health-row .value{color:#e5e5e5;font-weight:600;text-align:right;max-width:60%;word-break:break-all}
+    .logs-section h2{font-size:1.3rem;font-weight:700;margin-bottom:14px}
+    .log-table{width:100%;border-collapse:collapse;font-size:.82rem}
+    .log-table th{text-align:left;color:#a7a7a7;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;padding:8px 12px;border-bottom:1px solid #282828}
+    .log-table td{padding:8px 12px;border-bottom:1px solid #1e1e1e;color:#b3b3b3}
+    .log-table tr:hover{background:rgba(255,255,255,.03)}
+    .log-status{font-weight:700}
+    .log-status.s2xx{color:#1db954}
+    .log-status.s3xx{color:#3b82f6}
+    .log-status.s4xx{color:#f59e0b}
+    .log-status.s5xx{color:#f15e6c}
+    .refresh-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .refresh-bar span{font-size:.82rem;color:#666}
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <nav class="sidebar">
+    <div class="brand-header">
+      <svg class="brand-logo" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381C8.88 5.82 15.9 6.12 20.1 8.82c.54.3.72 1.02.42 1.56-.299.421-1.02.599-1.439.3z"/></svg>
+      <span class="brand-title">Spotify Tamil</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="/"><svg viewBox="0 0 24 24"><path d="M12.5 3.247a1 1 0 00-1 0L4 7.577V20h4.5v-6h7v6H20V7.577l-7.5-4.33z"/></svg><span>Home</span></a></li>
+      <li class="nav-item"><a href="/faq"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg><span>FAQ</span></a></li>
+      <li class="nav-item"><a href="/premium"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg><span>Premium</span></a></li>
+      <li class="nav-item"><a href="/errors"><svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg><span>Error Lab</span></a></li>
+      <li class="nav-item active"><a href="/health"><svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg><span>Health</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="main-view health-bg">
+    <header class="topbar">
+      <div class="topbar-left"><button class="nav-btn" onclick="history.back()">←</button></div>
+      <div class="topbar-right"><div class="user-avatar">V</div></div>
+    </header>
+
+    <div class="health-hero">
+      <h1>🩺 System Health Dashboard</h1>
+      <p>Real-time infrastructure status, request logging, database connectivity, and third-party API monitoring.</p>
+    </div>
+
+    <div class="health-dashboard">
+      <div class="health-status-bar" id="overallStatus">
+        <div class="status-dot healthy"></div>
+        <span class="status-text">Loading…</span>
+      </div>
+
+      <div class="refresh-bar">
+        <span id="lastRefresh">Last refreshed: —</span>
+        <button class="btn-pill btn-green" style="font-size:.8rem;" onclick="refreshHealth()">🔄 Refresh</button>
+      </div>
+
+      <div class="health-grid" id="healthGrid">Loading health data…</div>
+
+      <div class="logs-section">
+        <h2>📋 Recent Request Logs</h2>
+        <table class="log-table">
+          <thead><tr><th>Time</th><th>Method</th><th>URL</th><th>Status</th><th>Duration</th><th>IP</th></tr></thead>
+          <tbody id="logsBody"><tr><td colspan="6" style="text-align:center;color:#666;">Loading logs…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer class="player-bar">
+    <div class="now-playing-left">
+      <img class="now-playing-art" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=120&auto=format&fit=crop&q=60" alt="Art"/>
+      <div class="now-playing-meta"><h4>Spotify Tamil</h4><p>Health Dashboard</p></div>
+    </div>
+    <div class="player-center"><div class="player-controls-btns"><button class="btn-play-pause"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></button></div></div>
+    <div class="player-right"></div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{refreshHealth();refreshLogs();});
+
+async function refreshHealth(){
+  const grid=document.getElementById('healthGrid');
+  const bar=document.getElementById('overallStatus');
+  try{
+    const res=await fetch('/api/health');
+    const d=await res.json();
+    const isHealthy=d.status==='HEALTHY';
+    bar.innerHTML=`<div class="status-dot ${isHealthy?'healthy':'degraded'}"></div><span class="status-text">${d.status} — Uptime: ${d.uptime}</span>`;
+    document.getElementById('lastRefresh').textContent='Last refreshed: '+new Date().toLocaleTimeString();
+
+    grid.innerHTML=`
+      <div class="health-card">
+        <h3>🗄️ SQL Database <span class="h-badge ${d.databases.sql.status==='UP'?'h-up':'h-down'}">${d.databases.sql.status}</span></h3>
+        <div class="health-row"><span class="label">Engine</span><span class="value">${d.databases.sql.engine}</span></div>
+        <div class="health-row"><span class="label">FAQ Count</span><span class="value">${d.databases.sql.faqCount}</span></div>
+        <div class="health-row"><span class="label">Ticket Count</span><span class="value">${d.databases.sql.ticketCount}</span></div>
+        <div class="health-row"><span class="label">Latency</span><span class="value">${d.databases.sql.latencyMs}ms</span></div>
+      </div>
+
+      <div class="health-card">
+        <h3>🍃 MongoDB <span class="h-badge ${d.databases.mongoDb.status==='CONNECTED'?'h-up':'h-fallback'}">${d.databases.mongoDb.status}</span></h3>
+        <div class="health-row"><span class="label">Mode</span><span class="value">${d.databases.mongoDb.mode}</span></div>
+        <div class="health-row"><span class="label">Chat Logs</span><span class="value">${d.databases.mongoDb.chatLogsCount}</span></div>
+        <div class="health-row"><span class="label">Feedback</span><span class="value">${d.databases.mongoDb.feedbackCount}</span></div>
+      </div>
+
+      <div class="health-card">
+        <h3>🌐 Third-Party API <span class="h-badge ${d.thirdPartyApi.status==='UP'?'h-up':'h-fallback'}">${d.thirdPartyApi.status}</span></h3>
+        <div class="health-row"><span class="label">Name</span><span class="value">${d.thirdPartyApi.name}</span></div>
+        <div class="health-row"><span class="label">Mode</span><span class="value">${d.thirdPartyApi.mode||'—'}</span></div>
+        <div class="health-row"><span class="label">Timeout Limit</span><span class="value">${d.thirdPartyApi.configuredTimeoutMs}ms</span></div>
+        <div class="health-row"><span class="label">Latency</span><span class="value">${d.thirdPartyApi.latencyMs}ms</span></div>
+      </div>
+
+      <div class="health-card">
+        <h3>⚙️ System Info</h3>
+        <div class="health-row"><span class="label">Node.js</span><span class="value">${d.system.nodeVersion}</span></div>
+        <div class="health-row"><span class="label">Platform</span><span class="value">${d.system.platform} (${d.system.cpuArchitecture})</span></div>
+        <div class="health-row"><span class="label">Memory (RSS)</span><span class="value">${d.system.processMemoryUsageMB.rss} MB</span></div>
+        <div class="health-row"><span class="label">Heap Used</span><span class="value">${d.system.processMemoryUsageMB.heapUsed} MB</span></div>
+        <div class="health-row"><span class="label">Environment</span><span class="value">${d.environment}</span></div>
+      </div>
+
+      <div class="health-card">
+        <h3>🤖 AI Features</h3>
+        <div class="health-row"><span class="label">Assistant</span><span class="value">${d.features.aiAssistant}</span></div>
+        <div class="health-row"><span class="label">Error Codes</span><span class="value">${d.features.errorCodesCatalogCount} codes</span></div>
+        <div class="health-row"><span class="label">Tickets</span><span class="value">${d.features.ticketStorage}</span></div>
+        <div class="health-row"><span class="label">Chat Logs</span><span class="value">${d.features.chatLogStorage}</span></div>
+      </div>`;
+  }catch(e){
+    grid.innerHTML='<p style="color:#f15e6c;">Failed to load health data: '+e.message+'</p>';
+  }
+}
+
+async function refreshLogs(){
+  const tbody=document.getElementById('logsBody');
+  try{
+    const res=await fetch('/api/logs');
+    const data=await res.json();
+    const logs=data.logs||[];
+    if(!logs.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:#666;">No request logs yet.</td></tr>';return;}
+    tbody.innerHTML=logs.slice(0,25).map(l=>{
+      const cls=l.statusCode>=500?'s5xx':l.statusCode>=400?'s4xx':l.statusCode>=300?'s3xx':'s2xx';
+      const time=new Date(l.timestamp).toLocaleTimeString();
+      return `<tr><td>${time}</td><td>${l.method}</td><td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;">${l.url}</td><td class="log-status ${cls}">${l.statusCode}</td><td>${l.durationMs}ms</td><td>${l.clientIp}</td></tr>`;
+    }).join('');
+  }catch(e){
+    tbody.innerHTML='<tr><td colspan="6" style="color:#f15e6c;">Failed to load logs.</td></tr>';
+  }
+}
+</script>
+<script src="/js/chat-widget.js"></script>
+</body>
+</html>
+

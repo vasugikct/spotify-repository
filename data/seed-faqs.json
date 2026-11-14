@@ -1,0 +1,75 @@
+[
+  {
+    "question": "How do I listen to Tamil songs in Lossless or Dolby Atmos quality on Spotify Tamil?",
+    "answer": "Lossless FLAC audio (up to 24-bit/96kHz) and Spatial Audio with Dolby Atmos are available exclusively for Spotify Tamil Premium subscribers. To enable this, navigate to Settings > Audio Quality and select 'Very High' or 'HiFi Lossless'. Dolby Atmos is supported on compatible Kollywood soundtracks composed by Anirudh Ravichander, A.R. Rahman, and Santhosh Narayanan.",
+    "category": "Tamil Audio Quality",
+    "tags": "lossless, dolby atmos, hifi, anirudh, audio settings"
+  },
+  {
+    "question": "Why is a specific Tamil movie song greyed out or showing Error 488 (Track Region Restricted)?",
+    "answer": "Error 488 occurs when a Kollywood soundtrack's digital distribution rights are geographically restricted to India (Tamil Nadu) or specific international territories. Due to film production banner agreements, certain vintage or newly released tracks may require an International Tamil Pass or are subject to regional licensing windows.",
+    "category": "Copyright & Licensing",
+    "tags": "error 488, region restricted, licensing, geo-block, rights"
+  },
+  {
+    "question": "Can I download Tamil movie soundtracks for offline listening on mobile?",
+    "answer": "Yes! With Spotify Tamil Premium (Individual, Duo, or Family), you can download up to 10,000 Tamil songs on up to 5 devices. Tap the green 'Download' arrow on any album (such as Leo, Jailer, or Vikram) or playlist. Downloaded tracks remain playable offline as long as your device reconnects to the internet once every 30 days.",
+    "category": "Downloads & Offline",
+    "tags": "offline, download, mobile, storage, travel"
+  },
+  {
+    "question": "How does the Spotify Tamil Student discount plan work?",
+    "answer": "Enrolled college and university students in India can get Spotify Tamil Premium for just ₹59/month (a 50% discount). Verification is instant via your college email or SheerID portal. The student plan includes all Premium features: ad-free music, unlimited skips, offline downloads, and high-definition Kollywood tracks.",
+    "category": "Subscriptions & Billing",
+    "tags": "student, discount, 59 rupees, sheerid, college"
+  },
+  {
+    "question": "How do I switch between Tamil script and Tanglish (English script) lyrics?",
+    "answer": "While playing any Tamil song, click the 'Lyrics' microphone icon in the bottom player bar. In the lyrics viewer, toggle the 'Tamil / Tanglish' button at the top right to switch between original தமிழ் எழுத்துக்கள் (Tamil script) and phonetic English script for easy sing-along.",
+    "category": "Tamil Lyrics",
+    "tags": "lyrics, tanglish, tamil script, sing along, karaoke"
+  },
+  {
+    "question": "What should I do if the audio keeps buffering or stuttering during playback?",
+    "answer": "Buffering usually happens when network bandwidth drops below 320 kbps. Steps to fix: 1. Go to Settings > Audio Quality and toggle on 'Auto Streaming Quality'. 2. Clear Spotify Tamil cache under Settings > Storage. 3. Restart the app or check our /health page to ensure streaming CDN nodes are operational.",
+    "category": "Playback Troubleshooting",
+    "tags": "buffering, stuttering, slow streaming, cache, network"
+  },
+  {
+    "question": "Can I share my Tamil playlist with friends who use the Free plan?",
+    "answer": "Absolutely! Any collaborative or public Tamil playlist can be shared via link or Spotify Code. Free users can listen on shuffle mode on mobile or on-demand on desktop/web, supported by occasional sponsor messages.",
+    "category": "Playlists & Social",
+    "tags": "share playlist, collaborative, free plan, spotify code"
+  },
+  {
+    "question": "How are royalties paid to Tamil music composers, lyricists, and playback singers?",
+    "answer": "Spotify Tamil pays rights-holders through the Indian Performing Right Society (IPRS) and authorized Kollywood music record labels (Think Music, Sony Music South, Saregama Tamil, Lahari Music). Royalties are calculated on a stream-share model, supporting local artists directly with every play.",
+    "category": "Copyright & Licensing",
+    "tags": "royalties, iprs, sony music south, think music, composers"
+  },
+  {
+    "question": "How do I cancel or modify my Spotify Tamil Premium subscription?",
+    "answer": "You can change or cancel your subscription at any time without cancellation fees. Go to Your Account > Subscription > Change Plan, or click 'Cancel Premium'. You will retain Premium access until the end of your current prepaid billing cycle.",
+    "category": "Subscriptions & Billing",
+    "tags": "cancel subscription, billing, change plan, refund"
+  },
+  {
+    "question": "Why am I encountering Error 429 (Too Many Requests) when skipping songs?",
+    "answer": "Error 429 is triggered if you rapidly skip more than 6 songs in under 30 seconds on a Free account, or if your client exceeds our API rate threshold. Please wait 30 seconds for the cooldown to expire, or upgrade to Spotify Tamil Premium for truly unlimited skips.",
+    "category": "Playback Troubleshooting",
+    "tags": "error 429, rate limit, too many requests, skip limit"
+  },
+  {
+    "question": "How do I report incorrect Tamil song metadata or missing movie poster art?",
+    "answer": "If you spot a typo in a song title, incorrect singer credits, or a missing movie poster, click the three dots (...) next to the track and select 'Report Metadata', or ask the AI Assistant in the chat widget to automatically create an internal review ticket.",
+    "category": "Content & Metadata",
+    "tags": "metadata, movie poster, typo, report track, artist credit"
+  },
+  {
+    "question": "What payment methods are accepted for Spotify Tamil subscriptions in India and worldwide?",
+    "answer": "We accept UPI (Google Pay, PhonePe, Paytm), RuPay / Visa / Mastercard credit and debit cards, Net Banking across all major Indian banks, and international credit cards. Auto-pay subscriptions can be paused or managed directly from your UPI app.",
+    "category": "Subscriptions & Billing",
+    "tags": "payment, upi, gpay, phonepe, credit card, netbanking"
+  }
+]
+
